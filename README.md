@@ -1,60 +1,47 @@
-# Amar Passport Agent
+## Recommended IDE
 
-An AI-powered Bangladesh e-Passport information assistant built with Python and CrewAI.
+**PyCharm is recommended for this project.**
 
-## 1. Prerequisites
+The project has been tested in PyCharm, where Bengali text displays correctly in both the Run Console and Terminal.
 
-Before running this project, install:
+VS Code may require additional terminal font configuration to display Bengali text correctly.
 
-- **Python 3.12** — [Download Python](https://www.python.org/downloads/)
-- **Git** (optional) — [Download Git](https://git-scm.com/downloads/)
-- An **OpenRouter API key** — [Get API Key](https://openrouter.ai/keys)
+## Setup and Installation (Windows)
 
-During Python installation on Windows, select **Add Python to PATH**.
+### 1. Install Python
 
-## 2. Download the Project
+Install Python 3.12 from:
 
-### Option A: Download ZIP
+https://www.python.org/downloads/
 
-1. Open this project's GitHub repository.
-2. Click **Code → Download ZIP**.
-3. Extract the ZIP file.
-4. Open the extracted project folder in VS Code.
+Verify the installation:
 
-### Option B: Clone with Git
+```powershell
+python --version
+```
 
-Open PowerShell and run:
+### 2. Download the Project
+
+Download the repository from GitHub using **Code → Download ZIP**, extract it, and open the project folder in PyCharm.
+
+Alternatively, clone the repository:
 
 ```powershell
 git clone YOUR_GITHUB_REPOSITORY_URL
 cd YOUR_PROJECT_FOLDER
 ```
 
-Replace the example repository URL and folder name with the actual values.
+Replace the example URL and folder name with your actual repository details.
 
-## 3. Verify Python Installation
+### 3. Configure the Python Interpreter
 
-Open the project folder in VS Code and open its terminal.
+In PyCharm:
 
-Run:
+1. Open **Settings → Project → Python Interpreter**.
+2. Select your Python 3.12 interpreter or create a virtual environment.
+3. Open the PyCharm Terminal.
 
-```powershell
-python --version
-```
-
-The expected version is Python 3.12.x.
-
-If `python` is not recognized, try:
-
-```powershell
-py -3.12 --version
-```
-
-If neither command works, install Python 3.12 and ensure it is available in PATH.
-
-## 4. Create a Virtual Environment
-
-Run these commands from the project folder:
+Create a virtual environment if needed:
 
 ```powershell
 python -m venv .venv
@@ -66,93 +53,62 @@ Activate it:
 .\.venv\Scripts\Activate.ps1
 ```
 
-If PowerShell blocks activation, you can use the environment's Python directly without changing execution policies:
+### 4. Install Dependencies
 
-```powershell
-.\.venv\Scripts\python.exe -m pip install --upgrade pip
-```
+Ensure `requirements.txt` is present in the project root.
 
-## 5. Install Dependencies
-
-Make sure the repository contains `requirements.txt`.
-
-With the virtual environment activated, run:
+Run:
 
 ```powershell
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-## 6. Configure the API Key
+### 5. Configure the OpenRouter API Key
 
-Create a file named `.env` in the project root directory.
-
-Add your own OpenRouter API key:
+Create a `.env` file in the project root:
 
 ```dotenv
 OPENROUTER_API_KEY=your_openrouter_api_key_here
 ```
 
-Replace the placeholder with your actual API key.
+Get your API key from:
 
-**Security:** Never upload your `.env` file or API key to GitHub. Add `.env` to `.gitignore`.
+https://openrouter.ai/keys
 
-## 7. Run the Application
+Replace the placeholder with your own key.
 
-From the project root directory, run:
+**Security:** Never commit `.env` or your API key to GitHub. The repository's `.gitignore` should exclude `.env`.
+
+### 6. Run the Project
+
+In PyCharm, open `amar_passport_agent.py` and click **Run**.
+
+Alternatively, run it from the PyCharm Terminal:
 
 ```powershell
 python amar_passport_agent.py
 ```
 
-Follow the application's prompts to enter the required passport information.
+Follow the application's prompts and review the generated output in the Run Console or Terminal.
 
-The application may use local fallback data when live information retrieval is unavailable. Verify important fees, requirements, and processing times through official Bangladesh e-Passport sources.
+## Bengali Text Display
 
-## 8. Troubleshooting
+PyCharm is recommended because Bengali text displays correctly in its Console and Terminal in the tested setup.
 
-### Python is not recognized
+If Bengali text appears incorrectly in another terminal or IDE, try a Bengali-compatible font and UTF-8 configuration. The exact fix may depend on the terminal renderer and installed fonts.
 
-Try:
+## Troubleshooting
 
-```powershell
-py -3.12 -m pip --version
-```
+- **Python not found:** Check the configured interpreter in PyCharm.
+- **Missing dependencies:** Run `python -m pip install -r requirements.txt`.
+- **API authentication error:** Verify your `.env` file, variable name, and OpenRouter API key.
+- **Incorrect Bengali rendering:** Try running the project in PyCharm's Run Console or Terminal.
+- **Outdated passport information:** Verify fees, requirements, and processing times through official Bangladesh e-Passport sources.
 
-### Dependency installation fails
+## Important Notes
 
-Confirm that the virtual environment is activated, then run:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-### API key or authentication error
-
-- Confirm that `.env` is in the project root.
-- Check that the variable name matches the one used in the source code.
-- Verify that your OpenRouter API key is valid and has the necessary credits or access.
-
-### Bengali text displays incorrectly
-
-Try UTF-8 settings in PowerShell:
-
-```powershell
-chcp 65001
-$env:PYTHONUTF8 = "1"
-$env:PYTHONIOENCODING = "utf-8"
-```
-
-You may also need a Bengali-compatible terminal font.
-
-## 9. Important Notes
-
-- Internet access may be required for AI model calls and live information retrieval.
-- API usage may incur charges depending on the selected model and provider.
-- Local fallback data may not reflect current official rules or fees.
+- Internet access is required for API calls and any implemented live information retrieval.
+- OpenRouter usage may incur charges depending on the model and provider.
+- Local fallback data may not reflect current official requirements or fees.
 - This project is an informational assistant, not an official Bangladesh e-Passport service.
-- Never commit API keys, passwords, or other secrets to the repository.
-
-## License
-
-Add your chosen open-source license before distributing this project publicly.
